@@ -11,12 +11,6 @@ Spring Boot 4, Spring Data JPA, Liquibase и H2.
 mvn spring-boot:run
 ```
 
-Либо через Maven Wrapper в Windows:
-
-```powershell
-.\mvnw.cmd spring-boot:run
-```
-
 Приложение запускается на `http://localhost:8092`. По умолчанию используется H2 in-memory,
 структура базы создаётся Liquibase при старте.
 
@@ -75,7 +69,7 @@ Swagger UI доступен по адресу `http://localhost:8092/swagger-ui.
 $env:DB_URL = "jdbc:postgresql://localhost:5432/property_view"
 $env:DB_USERNAME = "property_view"
 $env:DB_PASSWORD = "secret"
-.\mvnw.cmd spring-boot:run
+mvn spring-boot:run
 ```
 
 Liquibase применит те же миграции к выбранной базе. Для другой реляционной СУБД достаточно

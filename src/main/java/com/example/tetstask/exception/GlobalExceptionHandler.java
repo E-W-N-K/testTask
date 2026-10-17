@@ -28,6 +28,14 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.BAD_REQUEST, "Request validation failed", request.getRequestURI(), errors);
     }
 
+    @ExceptionHandler(UnsupportedHistogramParameterException.class)
+    public ResponseEntity<ApiError> handleUnsupportedHistogramParameter(
+            UnsupportedHistogramParameterException exception,
+            HttpServletRequest request
+    ) {
+        return build(HttpStatus.BAD_REQUEST, exception.getMessage(), request.getRequestURI(), Map.of());
+    }
+
     private ResponseEntity<ApiError> build(HttpStatus status, String message, String path,
                                            Map<String, String> validationErrors) {
         ApiError error = new ApiError(

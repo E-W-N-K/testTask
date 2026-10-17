@@ -149,6 +149,16 @@ class HotelApiIntegrationTests {
                         "Unsupported histogram parameter 'name'. Allowed values: brand, city, country, amenities"));
     }
 
+    @Test
+    void exposesOpenApiDocumentation() throws Exception {
+        mockMvc.perform(get("/v3/api-docs"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.info.title", is("Property View API")))
+                .andExpect(jsonPath("$.paths['/property-view/hotels']").exists())
+                .andExpect(jsonPath("$.paths['/property-view/search']").exists())
+                .andExpect(jsonPath("$.paths['/property-view/histogram/{param}']").exists());
+    }
+
     private long createHotel(String request) throws Exception {
         MvcResult result = mockMvc.perform(post("/property-view/hotels")
                         .contentType(MediaType.APPLICATION_JSON)

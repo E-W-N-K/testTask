@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
 
-    <changeSet id="001-create-hotels" author="codex">
+    <changeSet id="001-create-hotels" author="EWNK">
         <createTable tableName="hotels">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -45,7 +45,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="002-create-hotel-amenities" author="codex">
+    <changeSet id="002-create-hotel-amenities" author="EWNK">
         <createTable tableName="hotel_amenities">
             <column name="hotel_id" type="BIGINT">
                 <constraints nullable="false"/>
